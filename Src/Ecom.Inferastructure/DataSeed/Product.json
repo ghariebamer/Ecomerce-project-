@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "product1",
+    "Description": "Decs for prod1 ",
+    "Price": 2000,
+    "CategoryId": 1
+  },
+  {
+    "Name": "product2",
+    "Description": "Decs for prod2 ",
+    "Price": 2500,
+    "CategoryId": 1
+  },
+  {
+    "Name": "product3",
+    "Description": "Decs for prod3 ",
+    "Price": 1000,
+    "CategoryId": 3
+  },
+  {
+    "Name": "product4",
+    "Description": "Decs for prod4 ",
+    "Price": 1800,
+    "CategoryId": 2
+  }
+
+]

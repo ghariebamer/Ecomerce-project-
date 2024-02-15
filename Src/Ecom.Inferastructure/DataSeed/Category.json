@@ -1,0 +1,18 @@
+[
+  {
+    "Name": "category1",
+    "Description": "Desc for cat 1"
+  },
+  {
+    "Name": "category2",
+    "Description": "Desc for cat 2"
+  },
+  {
+    "Name": "category3",
+    "Description": "Desc for cat 3"
+  },
+  {
+    "Name": "category4",
+    "Description": "Desc for cat 4"
+  }
+]
