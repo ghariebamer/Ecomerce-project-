@@ -13,9 +13,9 @@ namespace Ecom.Core.Interfaces
         IEnumerable<T> GetAll();
         Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, Object>> [] Includes);
         Task<IEnumerable<T>> GetAll(params Expression<Func<T, Object>>[] Includes);// params dataType [] 
-        Task<T> GetById(T id);
-        Task<T> GetByIdAsync(T id,params Expression< Func<T, object> >[] Includes);
-        Task AddElement(T el);
+        Task<T> GetById(int id);
+        Task<T> GetByIdAsync(int id,params Expression< Func<T, object> >[] Includes);
+        Task<T> AddElement(T el);
         Task UpdateElement(T el,int id);
         Task DeleteElement(T el);
     }

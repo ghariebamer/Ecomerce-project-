@@ -1,4 +1,5 @@
-﻿using Ecom.Core.Interfaces;
+﻿using Ecom.Core.Entities;
+using Ecom.Core.Interfaces;
 using Ecom.Inferastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Ecom.Inferastructure.Repositories
 {
-    public class GenericRepo<T> : IGenericRepo<T> where T : class
+    public class GenericRepo<T> : IGenericRepo<T> where T : BaseEntity<int>
 
     {
  
@@ -19,10 +20,11 @@ namespace Ecom.Inferastructure.Repositories
         {
             this.context = context;
         }
-        public async Task AddElement(T el)
+        public async Task<T> AddElement(T el)
         {
             await context.Set<T>().AddAsync(el);
             await context.SaveChangesAsync();
+            return el;
         }
         public async Task DeleteElement(T el)
         {
@@ -55,15 +57,15 @@ namespace Ecom.Inferastructure.Repositories
             }
             return await query.ToListAsync();
         }
-        public async Task<T> GetById(T id)
+        public async Task<T> GetById(int id)
         {
           T result= await context.Set<T>().FindAsync(id);
             return result;
         }
 
-        public async Task<T> GetByIdAsync(T id, params Expression<Func<T, object>>[] Includes)
+        public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] Includes)
         {
-            var query= context.Set<T>().AsQueryable();
+            var query= context.Set<T>().AsQueryable().Where(e=>e.Id==id);
             if(Includes !=null && Includes.Length > 0)
             {
                 foreach (var item in Includes)
@@ -71,7 +73,7 @@ namespace Ecom.Inferastructure.Repositories
                     query = query.Include(item);
                 }
             }
-            return await ((DbSet<T>)query).FindAsync(id);  // casting to DBSet for find 
+            return await query.FirstOrDefaultAsync();  // casting to DBSet for find 
         }
 
         public async Task UpdateElement(T el,int id)
