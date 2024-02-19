@@ -2,6 +2,7 @@
 using Ecom.Core.DTos;
 using Ecom.Core.Entities;
 using Ecom.Core.Interfaces;
+using Ecom.WebApi.Errors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -53,20 +54,17 @@ namespace Ecom.WebApi.Controllers
             return BadRequest("there is No products ");
         }
         [HttpGet("GetProductById/{Id}")]
+        [ProducesResponseType(typeof(ProductDto), 200)]
+        [ProducesResponseType(typeof(ApiExpection),400)]
         public IActionResult GetProductById( int Id)
         {
             var products = unitOfWork.Product.GetByIdAsync(Id,e=>e.Category).Result;
-            try
-            {
+       
+
                 if (products != null)
                     return Ok(mapper.Map<ProductDto>(products));
-            }
-            catch (Exception ex)
-            {
 
-                return BadRequest(ex.Message);
-            }
-            return BadRequest($"there is No products with this id={Id} ");
+                return NotFound(new ApiExpection(400));
         }
         [HttpPost("AddProduct")]
 
