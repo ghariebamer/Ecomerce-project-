@@ -2,8 +2,11 @@
 using Ecom.Core.DTos;
 using Ecom.Core.Entities;
 using Ecom.Core.Interfaces;
+using Ecom.Core.Shared;
 using Ecom.Inferastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,5 +89,30 @@ namespace Ecom.Inferastructure.Repositories
              await context.SaveChangesAsync();
             return true;
         }
+        
+        public (IReadOnlyList<ProductDto>,int count) GetAll(ProductParams productParams)
+        {
+            var products = context.Products.AsNoTracking().Include(x=>x.Category).ToList();
+            if(productParams.CategoryId.HasValue)
+                products=products.Where(x=>x.CategoryId== productParams.CategoryId.Value).ToList();
+            if( ! string.IsNullOrEmpty( productParams.Search))
+                products=products.Where(e=>e.Name.ToLower()==productParams.Search).ToList();
+          
+            if (!string.IsNullOrEmpty(productParams.Sort))
+            {
+                products = productParams.Sort switch
+                {
+                    "PriceAsc" => products.OrderBy(x => x.Price).ToList(),
+                    "PriceDesc" => products.OrderByDescending(x => x.Price).ToList(),
+                       _ => products.OrderBy(x => x.Name).ToList()
+                };
+            }
+            products = products.Skip(productParams.PageSize * (productParams.PageNumber - 1)).Take(productParams.PageSize).ToList();
+            var result = imapper.Map<IReadOnlyList<ProductDto>>(products);
+            int  count = GetTotalCount(products);
+            return (result,count);
+
+        } 
+    
     }
 }

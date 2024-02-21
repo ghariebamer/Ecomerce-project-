@@ -18,5 +18,6 @@ namespace Ecom.Core.Interfaces
         Task<T> AddElement(T el);
         Task UpdateElement(T el,int id);
         Task DeleteElement(T el);
+        int GetTotalCount(IReadOnlyList<T> table);
     }
 }

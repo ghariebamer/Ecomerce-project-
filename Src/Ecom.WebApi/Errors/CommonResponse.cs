@@ -16,7 +16,8 @@ namespace Ecom.WebApi.Errors
             400 => "Bad Request",
             4001 => "Not Authorize",
             404 => "Resource Not Found ",
-            500 => "Internal Server Error"
+            500 => "Internal Server Error",
+            _ => throw new NotImplementedException()
         };
 
 

@@ -18,8 +18,8 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.InferaRegesteration(builder.Configuration);
-        builder.Services.AddRegestionServices();
-        
+        builder.Services.AddRegestionServices(builder.Configuration);
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -34,7 +34,7 @@ internal class Program
         app.UseStatusCodePagesWithReExecute("/errors/{0}");
         app.UseStaticFiles();
         app.UseHttpsRedirection();
-
+        app.UseCors("CorsPolicy");
         app.UseAuthorization();
         app.MapControllers();
 

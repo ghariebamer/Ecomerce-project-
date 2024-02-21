@@ -2,6 +2,7 @@
 using Ecom.Core.DTos;
 using Ecom.Core.Entities;
 using Ecom.Core.Interfaces;
+using Ecom.Core.Shared;
 using Ecom.WebApi.Errors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +21,14 @@ namespace Ecom.WebApi.Controllers
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
-        [HttpGet("GetAllProducts")]
-        public IActionResult GetAllProducts()
+        [HttpGet("GetAllProducts")]     
+        public IActionResult GetAllProducts([FromQuery] ProductParams productParams)
         {
-            var products = unitOfWork.Product.GetAll();
+            var products = unitOfWork.Product.GetAll(productParams);
             try
             {
-                if(products!=null)
-                    return Ok(mapper.Map<List<ProductDto>>( products));
+                if(products.Item1!=null)
+                  return Ok(new Core.Shared.Paganition<ProductDto>( products.Item1, productParams.PageNumber,productParams.PageSize,products.count));
             }
             catch (Exception ex)
             {

@@ -8,7 +8,8 @@ namespace Ecom.WebApi.Extenions
 {
     public static class ApiRegesterion
     {
-       public static IServiceCollection AddRegestionServices(this IServiceCollection services)
+     
+        public static IServiceCollection AddRegestionServices(this IServiceCollection services,IConfiguration config)
         {
             // add Auto Mapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
@@ -35,6 +36,20 @@ namespace Ecom.WebApi.Extenions
                 };
             }
             );
+
+            // add Cors origin 
+
+            services.AddCors(o =>
+            {
+                o.AddPolicy("CorsPolicy", op =>
+                {
+                    op.AllowAnyMethod();
+                    op.AllowAnyHeader();
+                    op.WithOrigins("http://localhost:4200");
+                });
+            });
+         
+
             return services;
         }
     }

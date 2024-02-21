@@ -1,5 +1,6 @@
 ﻿using Ecom.Core.DTos;
 using Ecom.Core.Entities;
+using Ecom.Core.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Ecom.Core.Interfaces
         //for add behaviour for product Only
         Task<bool> AddProduct(CreateProductDto productDto);
         Task<bool> UpdateProduct(int id,UpdateProductDto productDto);
-       
+        (IReadOnlyList<ProductDto>,int count) GetAll(ProductParams  productParams);
+
+
     }
 }

@@ -85,5 +85,10 @@ namespace Ecom.Inferastructure.Repositories
                 await context.SaveChangesAsync();
             }
         }
+    
+         public int GetTotalCount (IReadOnlyList<T> values)
+        {
+            return values.Count();
+        }
     }
 }
