@@ -11,7 +11,6 @@ namespace Ecom.Core.Shared
         public int PageNumber { get; set; } = 1;
         private int  MaxPageSize =15;
         private int MinPageSize =3;
-        private int myProperty;
 
         public int PageSize { get => MinPageSize; set => MinPageSize = value> MaxPageSize ? MaxPageSize : value; }
         public string Sort { get; set; }

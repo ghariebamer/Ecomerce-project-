@@ -5,11 +5,13 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{26D9BED9-BF1E-4852-A5E7-376D0CB6A60F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecom.Core", "Src\Ecom.Core\Ecom.Core.csproj", "{BD045D53-2E52-4C14-A07B-75459187A1A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecom.Core", "Src\Ecom.Core\Ecom.Core.csproj", "{BD045D53-2E52-4C14-A07B-75459187A1A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecom.Inferastructure", "Src\Ecom.Inferastructure\Ecom.Inferastructure.csproj", "{1B1773A5-EB4C-4361-9A7A-6541AC70B05C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecom.Inferastructure", "Src\Ecom.Inferastructure\Ecom.Inferastructure.csproj", "{1B1773A5-EB4C-4361-9A7A-6541AC70B05C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecom.WebApi", "Src\Ecom.WebApi\Ecom.WebApi.csproj", "{FCC36A7E-1686-4C01-9180-62355B22FFB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecom.WebApi", "Src\Ecom.WebApi\Ecom.WebApi.csproj", "{FCC36A7E-1686-4C01-9180-62355B22FFB9}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "EcomUI", "Src\EcomUI\EcomUI.esproj", "{5E568A1C-4EDF-4CB6-813C-888B9CFDF529}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,12 @@ Global
 		{FCC36A7E-1686-4C01-9180-62355B22FFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCC36A7E-1686-4C01-9180-62355B22FFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCC36A7E-1686-4C01-9180-62355B22FFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E568A1C-4EDF-4CB6-813C-888B9CFDF529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E568A1C-4EDF-4CB6-813C-888B9CFDF529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E568A1C-4EDF-4CB6-813C-888B9CFDF529}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5E568A1C-4EDF-4CB6-813C-888B9CFDF529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E568A1C-4EDF-4CB6-813C-888B9CFDF529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E568A1C-4EDF-4CB6-813C-888B9CFDF529}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +45,7 @@ Global
 		{BD045D53-2E52-4C14-A07B-75459187A1A2} = {26D9BED9-BF1E-4852-A5E7-376D0CB6A60F}
 		{1B1773A5-EB4C-4361-9A7A-6541AC70B05C} = {26D9BED9-BF1E-4852-A5E7-376D0CB6A60F}
 		{FCC36A7E-1686-4C01-9180-62355B22FFB9} = {26D9BED9-BF1E-4852-A5E7-376D0CB6A60F}
+		{5E568A1C-4EDF-4CB6-813C-888B9CFDF529} = {26D9BED9-BF1E-4852-A5E7-376D0CB6A60F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {195CEA57-35C5-4F22-B50B-BD674468AF4C}
