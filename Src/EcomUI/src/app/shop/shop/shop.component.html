@@ -1,0 +1,50 @@
+<div class="container mt-3">
+    <div class="row">
+        <section class="col-3">
+            <h6 class="text-danger" style="font-weight: bold;">Sorting</h6>
+
+            <select class="form-select" aria-label="Default select example" (change)="OnSortingproducts($event)">
+                <option *ngFor="let item of selectOptions" value="{{item.value}}">{{item.name}}</option>          
+            </select>
+            <h6 class="text-danger" style="font-weight: bold;">Category</h6>
+            <ul class="list-group">
+                <li class="list-group-item">Select Category...</li>
+                <li class="list-group-item" *ngFor="let item of Categories"  (click)="selectCategory(item.id)">{{item.name}}</li>
+
+            </ul>
+        </section>
+        <section class="col-9">
+            <div class="d-flex justify-content-between align-items-center m-2">
+                <app-page-header [totalCount]="pageResponseModel.totalCount" [PageNumber]="ShopParams.PageNumber" [PageSize]="ShopParams.PageSize"></app-page-header>
+                <div *ngIf="!pageResponseModel.totalCount &&pageResponseModel.totalCount==0">
+                    <span class="text-danger"> No Data Found</span>
+                </div>
+                <div class="input-group col-4" style="width: 60%!important;">
+                    <input type="text" class="form-control mr-2" placeholder="Search ...................."
+                        aria-label="Recipient's username with two button addons" (keyUp.enter)="onSearch()" #searchEl>
+                    <button class="btn btn-outline-secondary" type="button" class="btn btn-primary" (click)="onSearch()">Search</button>
+                    <button class="btn btn-outline-secondary" type="button" class="btn btn-danger" (click)="onRest()">Rest</button>
+                </div>
+
+
+            </div>
+            <div class="album py-5 bg-body-tertiary">
+                <div class="container" *ngIf="pageResponseModel._List&&pageResponseModel._List.length>0">
+
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class="col" *ngFor="let item of pageResponseModel._List">
+                            <app-shop-items [product]="item"></app-shop-items>
+                        </div>
+                
+
+                    </div>
+                    <div class="d-flex justify-content-center mt-2" *ngIf="pageResponseModel.totalCount &&pageResponseModel.totalCount>0">
+                        <app-pager [totalItems]="pageResponseModel.totalCount" [itemsPerPage]="ShopParams.PageSize" (pageChaged)="OnPageChanged($event)"></app-pager>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

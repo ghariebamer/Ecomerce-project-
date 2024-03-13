@@ -58,7 +58,7 @@ namespace Ecom.Inferastructure.Repositories
         public  async Task<bool> UpdateProduct(int id,UpdateProductDto productDto)
         {
             // for remove current Image
-            var currentProduct = context.Products.Find(id);
+            var currentProduct = context.Products.AsNoTracking().FirstOrDefault(e=>e.Id==id);
             var src = "";
             var root = "/mages/Products/";
             if (!Directory.Exists("wwwroot" + root))
@@ -85,6 +85,7 @@ namespace Ecom.Inferastructure.Repositories
             }
             Product product = imapper.Map<Product>(productDto);
             product.ImageName = src;
+            product.Id = id;
               context.Products.Update(product);
              await context.SaveChangesAsync();
             return true;
@@ -93,9 +94,10 @@ namespace Ecom.Inferastructure.Repositories
         public (IReadOnlyList<ProductDto>,int count) GetAll(ProductParams productParams)
         {
             var products = context.Products.AsNoTracking().Include(x=>x.Category).ToList();
-            if(productParams.CategoryId.HasValue)
+            List<Product> Allproducts = context.Products.AsNoTracking().Include(x=>x.Category).ToList();
+            if (productParams.CategoryId.HasValue)
                 products=products.Where(x=>x.CategoryId== productParams.CategoryId.Value).ToList();
-            if( ! string.IsNullOrEmpty( productParams.Search))
+                if ( ! string.IsNullOrEmpty( productParams.Search))
                 products=products.Where(e=>e.Name.ToLower()==productParams.Search).ToList();
           
             if (!string.IsNullOrEmpty(productParams.Sort))
@@ -109,7 +111,7 @@ namespace Ecom.Inferastructure.Repositories
             }
             products = products.Skip(productParams.PageSize * (productParams.PageNumber - 1)).Take(productParams.PageSize).ToList();
             var result = imapper.Map<IReadOnlyList<ProductDto>>(products);
-            int  count = GetTotalCount(products);
+            int  count = GetTotalCount(Allproducts);
             return (result,count);
 
         } 

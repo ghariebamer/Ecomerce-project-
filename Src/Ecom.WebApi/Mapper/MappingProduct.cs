@@ -14,6 +14,7 @@ namespace Ecom.WebApi.Mapper
                 .ReverseMap();  
             CreateMap<Product,CreateProductDto>().ReverseMap();
             CreateMap<Product,UpdateProductDto>().ReverseMap();
+            CreateMap<UpdateProductDto, ProductDto>().ReverseMap();
         }
     }
 }

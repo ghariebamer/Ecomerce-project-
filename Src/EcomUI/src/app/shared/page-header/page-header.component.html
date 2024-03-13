@@ -1,0 +1,5 @@
+<header *ngIf="totalCount &&totalCount>0">
+    <span> Showing <strong> {{(PageNumber-1)*PageSize+1}} -
+            {{PageNumber*PageSize>totalCount?totalCount:PageNumber*PageSize}}</strong>
+        of <strong> {{totalCount}} </strong> results</span>
+</header>
