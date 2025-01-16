@@ -3,13 +3,12 @@
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">  
         <img src="/assets/Images/shopping.jpg" style="max-height: 50px;" alt="icon">
     </a>
-
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Shop</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item"><a  aria-current="page" class="nav-link"  routerLinkActive="active" routerLink="/"  [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+        <li class="nav-item"><a class="nav-link"  routerLinkActive="active" routerLink="/shop" >Shop</a></li>
+        <li class="nav-item"><a class="nav-link"  routerLinkActive="active">Contact</a></li>
+        <li class="nav-item"><a class="nav-link"  routerLinkActive="active">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link"  routerLinkActive="active">About</a></li>
     </ul>
     <div>
     <i class="fa fa-shopping-cart" style="font-size: 40px; margin-right: 25px;"  aria-hidden="true"></i>     

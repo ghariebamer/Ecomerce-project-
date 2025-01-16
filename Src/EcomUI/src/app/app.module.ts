@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ShopModule } from './shop/shop.module';
 import { FormsModule } from '@angular/forms';
+import { HomeModule } from './home/home.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     SharedModule,
     ShopModule,
-    FormsModule
+    FormsModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

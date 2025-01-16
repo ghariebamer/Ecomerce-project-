@@ -1,0 +1,15 @@
+/* .active {
+    background-color: rgb(255, 0, 17);
+  } */
+
+
+  .nav-link{
+    color: #0d6efd;
+    &.active{
+        color: #720707;
+        background-color: white;
+        font-weight: bold;
+        font-size: 25px;
+    }
+}
+

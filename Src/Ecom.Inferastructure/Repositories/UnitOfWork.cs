@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Ecom.Inferastructure.Repositories
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork: IUnitOfWork
     {
         //unit of work is main class for project 
 
@@ -23,6 +23,7 @@ namespace Ecom.Inferastructure.Repositories
 
         public IProduct Product { get; set; }
 
+      
         public UnitOfWork(ApplicationDbContext dbContext,IFileProvider fileProvider ,IMapper mapper)
         {
             this.dbContext = dbContext;
